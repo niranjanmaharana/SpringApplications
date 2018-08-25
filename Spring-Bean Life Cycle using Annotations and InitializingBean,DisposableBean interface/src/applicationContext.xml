@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/aop
+                            http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+                            http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                            http://www.springframework.org/schema/jee
+                            http://www.springframework.org/schema/jee/spring-jee-3.2.xsd 
+                            http://www.springframework.org/schema/tx
+                            http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+	<context:component-scan base-package="com.rxp.spring.properties"/>
+	
+	<!-- Using annotaion -->
+	<bean id="restaruant" class="com.rxp.spring.Restaruant" scope="prototype">
+		<property name="greetingMessage" value="Welcome to our Restaruant !"/>
+	</bean>
+	
+	<!-- By implementing Special Interfaces(InitializingBean, DisposableBean) -->
+	<!-- <bean id="student" class="com.rxp.spring.Student" scope="prototype">
+		<property name="rollNo" value="101"/>
+		<property name="studentName" value="Niranjan"/>
+	</bean> -->
+	
+	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+</beans>
