@@ -1,0 +1,37 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<!-- Simple login using window authentication based login -->
+	<!-- <http auto-config="true">
+		<intercept-url pattern="/welcome*" access="ROLE_USER" />
+		<http-basic/>
+	</http> -->
+	
+	<!-- Simple form login using spring provided default login page -->
+	<!-- <http auto-config="true">
+		<intercept-url pattern="/welcome*" access="ROLE_USER" />
+		<form-login/>
+		<logout logout-success-url="/home" />
+	</http> -->
+
+	<!-- Login using custom login page -->
+	<http auto-config="true">
+		<intercept-url pattern="/welcome*" access="ROLE_USER" />
+		<form-login login-page="/login" default-target-url="/welcome" authentication-failure-url="/loginFailed"  />
+		<logout logout-success-url="/login" />
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+			<password-encoder hash="sha-256"/>
+			<user-service>
+				<user name="niranjan" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" authorities="ROLE_USER" />
+				<user name="bui" password="b3a8e0e1f9ab1bfe3a36f231f676f78bb30a519d2b21e6c530c0eee8ebb4a5d0" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>
